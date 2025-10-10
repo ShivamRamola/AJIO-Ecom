@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000000;
+}
+
+.menu-items {
+    display: flex;
+}
+
+.navbar > ul > li {
+    padding: 10px;
+    list-style-type: none;
+}
+
+/* 🔧 FIX: Use grid or flex-wrap for product layout */
+.product-card {
+    margin-top: 10px;
+    display: grid; /* You can also use flex with flex-wrap */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Product styling */
+.product {
+    border: 1px solid #000000;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product:hover {
+    transform: scale(1.03);
+}
+
+/* Product image styling */
+.product img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
