@@ -1,3 +1,4 @@
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -16,11 +17,11 @@
 /* 🔧 FIX: Use grid or flex-wrap for product layout */
 .product-card {
     margin-top: 10px;
-    display: grid; /* You can also use flex with flex-wrap */
+    display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 /* Product styling */
@@ -38,8 +39,18 @@
 
 /* Product image styling */
 .product img {
-    width: 100%;
-    max-width: 150px;
-    height: auto;
+    width: 100px;
+    max-width: 200px;
+    height: 150px;
     margin-bottom: 10px;
+}
+.skeleton-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.skeleton {
+    width: 200px;
+    height: 400px;
+    margin: 10px;
+    background-color: #f0f0f0f0;
 }

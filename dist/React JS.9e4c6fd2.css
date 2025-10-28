@@ -1,0 +1,55 @@
+.navbar {
+  border-bottom: 1px solid #000;
+  justify-content: space-between;
+  display: flex;
+}
+
+.menu-items {
+  display: flex;
+}
+
+.navbar > ul > li {
+  padding: 10px;
+  list-style-type: none;
+}
+
+.product-card {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  display: grid;
+}
+
+.product {
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 10px;
+  transition: transform .2s ease-in-out;
+}
+
+.product:hover {
+  transform: scale(1.03);
+}
+
+.product img {
+  width: 100px;
+  max-width: 200px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.skeleton-container {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.skeleton {
+  background-color: #f0f0f0f0;
+  width: 200px;
+  height: 400px;
+  margin: 10px;
+}
+/*# sourceMappingURL=React JS.9e4c6fd2.css.map */

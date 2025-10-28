@@ -1,4 +1,8 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // import Link for client-side routing
 const Navbar = () => {
+  const [btnName, setBtnName] = useState("Light");
+  useEffect(() => {}, []);
   return (
     <div
       className="navbar"
@@ -11,11 +15,30 @@ const Navbar = () => {
     >
       <h1>LOGO</h1>
       <ul className="menu-items">
-        <li>MEN</li>
-        <li>WOMEN</li>
-        <li>KIDS</li>
-        <li>CART</li>
+        <li>
+          {" "}
+          <Link to="/men">MEN</Link>
+        </li>
+        <li>
+          {" "}
+          <Link to="/women">WOMEN</Link>
+        </li>
+        <li>
+          {" "}
+          <Link to="/kids">KIDS</Link>
+        </li>
+        <li>
+          {" "}
+          <Link to="/cart">CART</Link>
+        </li>
       </ul>
+      <button
+        onClick={() =>
+          setBtnName((prev) => (prev === "Light" ? "Dark" : "Light"))
+        }
+      >
+        {btnName}
+      </button>
     </div>
   );
 };
