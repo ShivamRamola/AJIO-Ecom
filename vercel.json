@@ -1,5 +1,5 @@
 {
   "buildCommand": "parcel build index.html",
   "outputDirectory": "dist",
-  "framework": null,
+  "framework": "none",
 }
