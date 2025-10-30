@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel index.html --port 5000",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "dev": "parcel index.html --open"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "parcel": "^2.16.0"
   },
   "dependencies": {
+    "nodemon": "^3.1.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.30.1",

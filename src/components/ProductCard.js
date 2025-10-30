@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import Skeleton from "./Skeleton";
+import { Link } from "react-router-dom";
 
 export const ProductCard = () => {
   // keep products in state so we can update (filter) them safely
@@ -17,12 +18,10 @@ export const ProductCard = () => {
   const fetchData = async () => {
     const data = await fetch("https://fakestoreapi.com/products");
     const resData = await data.json();
-    console.log(resData);
     // store fetched products so UI updates and skeleton is removed
     setProducts(resData);
     setFilteredProduct(resData);
   };
-  console.log("Products render ");
 
   const showTopRated = () => {
     // filter from the original full list so filters don't stack on top of each other
@@ -71,7 +70,13 @@ export const ProductCard = () => {
       </button>
       <div className="product-card">
         {products.map((product) => (
-          <Product key={product.id} product={product} />
+          <Link
+            key={product.id}
+            to={`/products/${product.id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Product product={product} />
+          </Link>
         ))}
       </div>
     </div>

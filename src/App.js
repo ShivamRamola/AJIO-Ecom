@@ -1,34 +1,54 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
-import Navbar from "./components/Navbar";
-import ProductCard from "./components/ProductCard";
-import About from "./components/About";
-import Men from "./components/Men";
-import Kid from "./components/Kid";
-import Women from "./components/Women";
-import Cart from "./components/Cart";
-import Error from "./components/Error";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-const App = () => (
+import Navbar from "./components/Navbar";
+import Error from "./components/Error";
+
+// Lazy-loaded components
+const ProductCard = lazy(() => import("./components/ProductCard"));
+const About = lazy(() => import("./components/About"));
+const Men = lazy(() => import("./components/Men"));
+const Kid = lazy(() => import("./components/Kid"));
+const Women = lazy(() => import("./components/Women"));
+const Cart = lazy(() => import("./components/Cart"));
+const ProductDetail = lazy(() => import("./components/ProductDetail"));
+
+// Layout that stays across all routes (Navbar + content)
+const AppLayout = () => (
   <div>
     <Navbar />
-    <ProductCard />
+    <Suspense
+      fallback={
+        <div style={{ textAlign: "center", marginTop: "50px" }}>Loading...</div>
+      }
+    >
+      <Outlet /> {/* This is where route components will render */}
+    </Suspense>
   </div>
 );
 
-// create router AFTER App and other components are defined/imported
+// Router configuration
 const router = createBrowserRouter([
-  { path: "/", element: <App />, errorElement: <Error /> },
-  { path: "/about", element: <About />, errorElement: <Error /> },
-  { path: "/men", element: <Men />, errorElement: <Error /> },
-  { path: "/kids", element: <Kid />, errorElement: <Error /> },
-  { path: "/women", element: <Women />, errorElement: <Error /> },
-  { path: "/cart", element: <Cart />, errorElement: <Error /> },
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      { index: true, element: <ProductCard /> }, // default (home) route
+      { path: "products", element: <ProductCard /> }, // product listing page
+      { path: "products/:id", element: <ProductDetail /> }, // product detail page
+      { path: "about", element: <About /> },
+      { path: "men", element: <Men /> },
+      { path: "kids", element: <Kid /> },
+      { path: "women", element: <Women /> },
+      { path: "cart", element: <Cart /> },
+    ],
+  },
 ]);
-
+// Render app
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={router} />);
 
-export default App;
+export default AppLayout;

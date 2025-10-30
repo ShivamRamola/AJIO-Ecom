@@ -32,13 +32,6 @@ const Navbar = () => {
           <Link to="/cart">CART</Link>
         </li>
       </ul>
-      <button
-        onClick={() =>
-          setBtnName((prev) => (prev === "Light" ? "Dark" : "Light"))
-        }
-      >
-        {btnName}
-      </button>
     </div>
   );
 };
